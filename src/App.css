@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+body {
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  background: #f8f8f8;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+button {
+  background: #e3b1c8;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
