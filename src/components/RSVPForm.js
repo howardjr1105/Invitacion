@@ -10,6 +10,29 @@ const RSVPForm = () => {
     e.preventDefault();
     setConfirmed(true);
   };
+  const handleSubmit = async () => {
+    const params = new URLSearchParams(window.location.search);
+    const guestName = params.get("invitado") || "Invitado";
+
+    const formData = {
+      nombre: guestName,
+      asistencia: attending,
+      personas: numPeople,
+      niños: numChildren,
+    };
+
+    await fetch(
+      "https://prod-159.westus.logic.azure.com:443/workflows/536661fb74ca43909baacaf85076ebc5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=99P0hzPzCgSHoPa7aYRhovGuRcgQJyhBbfOA7w1qsmM",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    alert("Confirmación enviada!");
+    
+  };
 
   return (
     <div className="rsvp-form">
@@ -60,7 +83,9 @@ const RSVPForm = () => {
             </>
           )}
 
-          <button type="submit">Confirmar</button>
+          <button type="submit" onClick={handleSubmit}>
+            Confirmar
+          </button>
         </form>
       ) : (
         <p>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
