@@ -3,6 +3,8 @@ import React from "react";
 const Map = () => {
   return (
     <div>
+      <h1>Nos Casamos</h1>
+      <h3>Sabado 28 Junio</h3>
       <h2>Ubicación del evento</h2>
       <iframe
         title="Mapa"

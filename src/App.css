@@ -39,7 +39,8 @@
 body {
   font-family: "Arial", sans-serif;
   text-align: center;
-  background: #f8f8f8;
+  background-color: #fef9e5;
+  background-size: 100%;
 }
 
 .container {
@@ -54,4 +55,32 @@ button {
   border: none;
   padding: 10px;
   cursor: pointer;
+}
+
+.header {
+  padding-top: 8rem;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  background: url("./fondoH.png") no-repeat;
+  background-size: 100%;
+}
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
+
+.header h1,
+.header h2 {
+  color: gold;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.header h1 {
+  font-size: 4rem;
+}
+.header h2 {
+  font-size: 2.5rem;
+  padding-top: 2rem;
+}
+.header h3 {
+  font-size: 1.8rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
