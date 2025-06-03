@@ -14,9 +14,9 @@ const Header = () => {
         el uno, levanta al otro
       </h3>
       <h5>Eclesiastés 4:9-12</h5>
-      <h1>Alex Obando</h1>
-      <h1>&</h1>
-      <h1>Doriam Ortega</h1>
+      <h2>Alex Obando</h2>
+      <h2>&</h2>
+      <h2>Doriam Ortega</h2>
       <h3>
         Todos los dias son maravillosos, y nos gustaria que nos acompañen en el
         mas especial para nosotros
