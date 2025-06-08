@@ -38,13 +38,13 @@ const CountdownTimer = ({ targetDate }) => {
   ];
 
   return (
-    <div className="container-fluid bg-dark py-3">
+    <div className="container-fluid py-3">
       <div className="row justify-content-center g-2">
         {units.map(({ label, value }) => (
-          <div key={label} className="col-3">
-            <div className="bg-secondary text-white text-center rounded p-2">
-              <div className="fs-5 fw-bold">{formatTime(value)}</div>
-              <div className="text-uppercase small">{label}</div>
+          <div key={label} className="col-3 ">
+            <div className="text-white text-center rounded p-2 bg">
+              <div className="fs-5 fw-bold font">{formatTime(value)}</div>
+              <div className="text-uppercase small font">{label}</div>
             </div>
           </div>
         ))}
