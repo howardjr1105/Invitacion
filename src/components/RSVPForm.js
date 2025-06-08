@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Select, Space } from "antd";
+import { InputNumber } from "antd";
 
 const RSVPForm = () => {
   const [attending, setAttending] = useState("");
@@ -10,6 +12,11 @@ const RSVPForm = () => {
     e.preventDefault();
     setConfirmed(true);
   };
+
+  const handleChange = (value) => {
+    setAttending(value);
+  };
+
   const handleSubmit = async () => {
     const params = new URLSearchParams(window.location.search);
     const guestName = params.get("invitado") || "Invitado";
@@ -31,7 +38,6 @@ const RSVPForm = () => {
     );
 
     alert("Confirmación enviada!");
-    
   };
 
   return (
@@ -41,20 +47,23 @@ const RSVPForm = () => {
       {!confirmed ? (
         <form onSubmit={handleConfirm}>
           <label>¿Asistirás?</label>
-          <select
-            value={attending}
-            onChange={(e) => setAttending(e.target.value)}
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="yes">Sí</option>
-            <option value="no">No</option>
-          </select>
+          <Space wrap>
+            <Select
+              value={attending}
+              onChange={handleChange}
+              style={{ width: "4rem" }}
+              placeholder="Selecciona una opción"
+              options={[
+                { value: "yes", label: "Sí" },
+                { value: "no", label: "No" },
+              ]}
+            />
+          </Space>
 
           {attending === "yes" && (
             <>
               <label>Número de personas (máx. 5)</label>
-              <input
+              <InputNumber
                 type="number"
                 value={numPeople}
                 onChange={(e) =>
@@ -68,7 +77,7 @@ const RSVPForm = () => {
               />
 
               <label>Número de niños</label>
-              <input
+              <InputNumber
                 type="number"
                 value={numChildren}
                 onChange={(e) =>
