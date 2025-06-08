@@ -84,3 +84,16 @@ button {
   font-size: 1.8rem;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
+.Map h4 {
+  font-size: 1.6rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.Map {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

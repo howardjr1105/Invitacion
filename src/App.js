@@ -5,7 +5,7 @@ import Map from "./components/Map";
 import RSVPForm from "./components/RSVPForm";
 
 function App() {
-  const fechaObjetivo = "2025-09-01T15:00:00";
+  const fechaObjetivo = "2025-06-28T18:00:00";
 
   return (
     <>

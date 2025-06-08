@@ -7,8 +7,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1>Nuestra</h1>
-      <h1>Boda</h1>
+      <h1>Nos casamos</h1>
       <h3>
         Más vale dos que uno, porque obtienen más fruto de su esfuerzo, si caen,
         el uno, levanta al otro
@@ -18,11 +17,14 @@ const Header = () => {
       <h2>&</h2>
       <h2>Doriam Ortega</h2>
       <h3>
-        Todos los dias son maravillosos, y nos gustaria que nos acompañen en el
-        mas especial para nosotros
+        Cada día es un regalo, pero este sera el más especial de todos. Nos
+        encantaria que nos acompañes a celebrar la continuación de nuestra
+        historia juntos.
       </h3>
       <h2>{guestName}</h2>
-      <h5>¡Te invitamos a celebrar este día tan especial! 💍</h5>
+      <h3>
+        Tu presencia hará a un más especial este capitulo de nuestras vidas
+      </h3>
     </header>
   );
 };
