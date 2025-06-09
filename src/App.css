@@ -140,6 +140,9 @@ button {
   margin-right: 1rem;
   margin-top: 1rem;
 }
-.modal {
-  background: red;
+.carino {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }

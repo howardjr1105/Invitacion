@@ -1,4 +1,5 @@
 import React from "react";
+import { HiCurrencyDollar } from "react-icons/hi";
 
 const Map = () => {
   return (
