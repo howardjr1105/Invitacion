@@ -13,9 +13,11 @@ function App() {
       <Header />
       <Separador />
       <Map />
+      <Separador />
       <div className="min-h-screen flex items-center justify-center bg-white">
         <CountdownTimer targetDate={fechaObjetivo} />
       </div>
+      <Separador />
 
       <RSVPForm />
     </>

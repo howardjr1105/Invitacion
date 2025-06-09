@@ -9,10 +9,11 @@ const Header = () => {
     <header className="header">
       <h1>Nos casamos</h1>
       <h3>
-        Más vale dos que uno, porque obtienen más fruto de su esfuerzo, si caen,
-        el uno, levanta al otro
+        Más valen dos que uno, porque obtienen más fruto de su esfuerzo, si
+        caen, el uno, levanta al otro
       </h3>
       <h5>Eclesiastés 4:9-12</h5>
+      <div className="separator"></div>
       <h2>Alex Obando</h2>
       <h2>&</h2>
       <h2>Doriam Ortega</h2>
@@ -22,6 +23,7 @@ const Header = () => {
         encantaria que nos acompañes a celebrar la continuación de nuestra
         historia juntos.
       </h3>
+      <div className="separator"></div>
       <h2>{guestName}</h2>
       <h3>
         Tu presencia hará a un más especial este capitulo de nuestras vidas

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select, Space } from "antd";
+import { Modal, Select, Space, message } from "antd";
 import { InputNumber } from "antd";
 
 const RSVPForm = () => {
@@ -7,10 +7,12 @@ const RSVPForm = () => {
   const [numPeople, setNumPeople] = useState(1);
   const [numChildren, setNumChildren] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleConfirm = (e) => {
     e.preventDefault();
     setConfirmed(true);
+    setIsModalOpen(true);
   };
 
   const handleChange = (value) => {
@@ -36,8 +38,8 @@ const RSVPForm = () => {
         headers: { "Content-Type": "application/json" },
       }
     );
-
-    alert("Confirmación enviada!");
+    message.success("✅ Confirmacion enviada! 🎉"); // Mensaje de éxito
+    //alert("Confirmación enviada!");
   };
 
   return (
@@ -46,9 +48,10 @@ const RSVPForm = () => {
 
       {!confirmed ? (
         <form onSubmit={handleConfirm}>
-          <label>¿Asistirás?</label>
+          <label className="formulario">¿Asistirás?</label>
           <Space wrap>
             <Select
+              className="formulario"
               showSearch
               value={attending}
               onChange={handleChange}
@@ -65,6 +68,7 @@ const RSVPForm = () => {
             <>
               <label>Número de personas (máx. 5)</label>
               <InputNumber
+                className="formulario"
                 type="number"
                 value={numPeople}
                 style={{ width: "3rem" }}
@@ -78,6 +82,7 @@ const RSVPForm = () => {
 
               <label>Número de niños</label>
               <InputNumber
+                className="formulario"
                 type="number"
                 value={numChildren}
                 style={{ width: "3rem" }}
@@ -91,12 +96,24 @@ const RSVPForm = () => {
             </>
           )}
 
-          <button type="submit" onClick={handleSubmit}>
+          <button
+            type="submit"
+            id="confirmar"
+            onClick={handleSubmit}
+            disabled={!attending}
+          >
             Confirmar
           </button>
         </form>
       ) : (
-        <p>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
+        <Modal
+          className=""
+          open={isModalOpen}
+          onOk={() => setIsModalOpen(false)}
+          onCancel={() => setIsModalOpen(false)}
+        >
+          <p>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
+        </Modal>
       )}
     </div>
   );
