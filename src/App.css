@@ -71,7 +71,7 @@ button {
 
 .header h1,
 .header h2 {
-  color: gold;
+  color: rgb(217, 179, 82);
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 .header h1 {
@@ -108,7 +108,7 @@ button {
   font-style: normal;
 }
 .font {
-  color: gold;
+  color: rgb(217, 179, 82);
 }
 .bg {
   background-color: rgba(255, 215, 0, 0.2);
