@@ -1,5 +1,3 @@
-import { HiCurrencyDollar } from "react-icons/hi";
-
 const carino = () => {
   return (
     <div className="carino">
