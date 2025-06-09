@@ -146,3 +146,29 @@ button {
   font-weight: 500;
   font-style: normal;
 }
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0f172a;
+  color: #facc15;
+  text-align: center;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.enter-button {
+  background-color: #facc15;
+  color: #0f172a;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
