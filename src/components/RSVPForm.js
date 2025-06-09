@@ -49,6 +49,7 @@ const RSVPForm = () => {
           <label>¿Asistirás?</label>
           <Space wrap>
             <Select
+              showSearch
               value={attending}
               onChange={handleChange}
               style={{ width: "4rem" }}
@@ -66,10 +67,9 @@ const RSVPForm = () => {
               <InputNumber
                 type="number"
                 value={numPeople}
-                onChange={(e) =>
-                  setNumPeople(
-                    Math.min(5, Math.max(1, parseInt(e.target.value)))
-                  )
+                style={{ width: "3rem" }}
+                onChange={(value) =>
+                  setNumPeople(Math.min(5, Math.max(1, value)))
                 }
                 min="1"
                 max="5"
@@ -80,10 +80,9 @@ const RSVPForm = () => {
               <InputNumber
                 type="number"
                 value={numChildren}
-                onChange={(e) =>
-                  setNumChildren(
-                    Math.min(numPeople, Math.max(0, parseInt(e.target.value)))
-                  )
+                style={{ width: "3rem" }}
+                onChange={(value) =>
+                  setNumChildren(Math.min(numPeople, Math.max(0, value)))
                 }
                 min="0"
                 max={numPeople}

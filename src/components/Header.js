@@ -16,6 +16,7 @@ const Header = () => {
       <h2>Alex Obando</h2>
       <h2>&</h2>
       <h2>Doriam Ortega</h2>
+      <div className="separator"></div>
       <h3>
         Cada día es un regalo, pero este sera el más especial de todos. Nos
         encantaria que nos acompañes a celebrar la continuación de nuestra
