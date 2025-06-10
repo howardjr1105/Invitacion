@@ -8,6 +8,7 @@ import Separador from "./components/Separador";
 import Carino from "./components/carino";
 import BackgroundMusic from "./components/BackgroundMusic";
 import WelcomeScreen from "./components/WelcomeScreen.js";
+import CarouselComponent from "./components/CarouselComponent";
 
 function App() {
   const [entered, setEntered] = useState(false);
@@ -24,6 +25,8 @@ function App() {
       ) : (
         <div>
           <Header />
+          <Separador />
+          <CarouselComponent />
           <Separador />
           <Map />
           <Separador />

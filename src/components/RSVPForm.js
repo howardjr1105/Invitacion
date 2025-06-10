@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Select, Space, message } from "antd";
 import { InputNumber } from "antd";
 
@@ -8,6 +8,14 @@ const RSVPForm = () => {
   const [numChildren, setNumChildren] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Verificar si ya se envió el formulario antes de renderizar
+  useEffect(() => {
+    const enviado = localStorage.getItem("confirmacionEnviada");
+    if (enviado === "true") {
+      setConfirmed(true);
+    }
+  }, []);
 
   const handleConfirm = (e) => {
     e.preventDefault();
@@ -38,15 +46,22 @@ const RSVPForm = () => {
         headers: { "Content-Type": "application/json" },
       }
     );
-    message.success("✅ Confirmacion enviada! 🎉"); // Mensaje de éxito
-    //alert("Confirmación enviada!");
+
+    // Guardar en localStorage que el usuario ha confirmado
+    localStorage.setItem("confirmacionEnviada", "true");
+
+    message.success("✅ Confirmación enviada! 🎉");
   };
 
   return (
     <div className="rsvp-form">
-      <h2>Confirmar Asistencia</h2>
-
-      {!confirmed ? (
+      {!confirmed && <h2>Confirmar Asistencia</h2>}{" "}
+      {/* Ahora solo se muestra si no se envió */}
+      {confirmed ? (
+        <div className="mensaje-confirmacion">
+          <h3>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</h3>
+        </div>
+      ) : (
         <form onSubmit={handleConfirm}>
           <label className="formulario">¿Asistirás?</label>
           <Space wrap>
@@ -55,7 +70,7 @@ const RSVPForm = () => {
               showSearch
               value={attending}
               onChange={handleChange}
-              style={{ width: "4rem" }}
+              style={{ width: "6rem" }}
               placeholder="Selecciona una opción"
               options={[
                 { value: "yes", label: "Sí" },
@@ -105,16 +120,15 @@ const RSVPForm = () => {
             Confirmar
           </button>
         </form>
-      ) : (
-        <Modal
-          className=""
-          open={isModalOpen}
-          onOk={() => setIsModalOpen(false)}
-          onCancel={() => setIsModalOpen(false)}
-        >
-          <p>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
-        </Modal>
       )}
+      <Modal
+        className=""
+        open={isModalOpen}
+        onOk={() => setIsModalOpen(false)}
+        onCancel={() => setIsModalOpen(false)}
+      >
+        <p>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
+      </Modal>
     </div>
   );
 };
