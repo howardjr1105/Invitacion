@@ -4,11 +4,17 @@ const Map = () => {
   return (
     <div className="Map">
       <div className="info">
-        <h4>Fecha: 28 de Junio 2025</h4>
-        <h4>Hora: 6:00 PM</h4>
-        <h4>Recepción: Hassan Restaurant VIP</h4>
+        <h4>
+          <span className="resaltar">Fecha:</span> 28 de Junio 2025
+        </h4>
+        <h4>
+          <span className="resaltar">Hora:</span> 6:00 PM
+        </h4>
+        <h4>
+          <span className="resaltar">Recepción:</span> Hassan Restaurant VIP
+        </h4>
       </div>
-      <div>
+      <div className="map-info">
         <iframe
           className="map-iframe"
           title="Mapa"

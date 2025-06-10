@@ -13,9 +13,8 @@ const WelcomeScreen = ({ onEnter }) => {
   return (
     <div className={`welcome-container ${fadeOut ? "fade-out" : ""}`}>
       <h1>Bienvenido</h1>
-      <p>Haz clic en el botón para entrar al evento y activar el sonido 🎶</p>
       <button className="enter-button" onClick={handleClick}>
-        Entrar
+        Abrir
       </button>
     </div>
   );

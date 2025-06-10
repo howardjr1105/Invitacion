@@ -50,7 +50,7 @@ body {
 }
 
 button {
-  background: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.7);
   color: white;
   border: none;
   padding: 10px;
@@ -152,10 +152,14 @@ button {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #0f172a;
-  color: #facc15;
+  background: url("./sobre.png") no-repeat center;
+  color: #0f172a;
   text-align: center;
   transition: opacity 1.5s ease-in-out;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .fade-out {
@@ -170,7 +174,9 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  opacity: 0.85;
+  margin-left: 2rem;
+  margin-bottom: 2.5rem;
 }
 .nombres {
   position: relative;
@@ -195,4 +201,19 @@ button {
   opacity: 0.25; /* Ajusta la transparencia */
   z-index: -1; /* Envía la imagen detrás del contenido */
   margin-top: 0.5rem;
+}
+.info {
+  text-align: left;
+  padding-left: 2rem;
+}
+.map-info iframe {
+  border-radius: 1rem;
+}
+.resaltar {
+  color: rgb(217, 179, 82);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.welcome-container h1 {
+  padding-bottom: 4rem;
+  padding-left: 2rem;
 }
