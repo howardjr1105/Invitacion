@@ -60,6 +60,7 @@ button {
 
 .header {
   padding-top: 8rem;
+  padding-bottom: 3rem;
   font-family: "Dancing Script", cursive;
   font-optical-sizing: auto;
   font-weight: 500;
