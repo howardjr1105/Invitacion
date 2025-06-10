@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
