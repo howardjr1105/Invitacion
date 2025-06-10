@@ -14,9 +14,11 @@ const Header = () => {
       </h3>
       <h5>Eclesiastés 4:9-12</h5>
       <div className="separator"></div>
-      <h2>Alex Obando</h2>
-      <h2>&</h2>
-      <h2>Doriam Ortega</h2>
+      <div className="nombres">
+        <h2>Alex Obando</h2>
+        <h2>&</h2>
+        <h2>Doriam Ortega</h2>
+      </div>
       <div className="separator"></div>
       <h3>
         Cada día es un regalo, pero este sera el más especial de todos. Nos
