@@ -1,4 +1,5 @@
 import React from "react";
+import CarouselComponent from "./CarouselComponent";
 
 const Header = () => {
   // Obtener el nombre del invitado desde la URL
@@ -8,6 +9,7 @@ const Header = () => {
   return (
     <header className="header">
       <h1>Nos casamos</h1>
+      <CarouselComponent />
       <h3>
         Más valen dos que uno, porque obtienen más fruto de su esfuerzo, si
         caen, el uno, levanta al otro
