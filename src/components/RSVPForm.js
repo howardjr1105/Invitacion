@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Modal, Select, Space, message } from "antd";
 import { InputNumber } from "antd";
 import Lottie from "react-lottie";
-import OK from "../static/OK-Animated.json";
+import Send from "../static/Send-Animated.json";
 
 const RSVPForm = () => {
   const OkData = {
     loop: true,
     autoplay: true,
-    animationData: OK,
+    animationData: Send,
   };
   const [attending, setAttending] = useState("");
   const [numPeople, setNumPeople] = useState(1);

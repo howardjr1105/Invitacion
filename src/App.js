@@ -27,6 +27,7 @@ function App() {
           <Separador />
           <Map />
           <Separador />
+          <h1 className="cont">Faltan</h1>
           <div className="min-h-screen flex items-center justify-center bg-white">
             <CountdownTimer targetDate={fechaObjetivo} />
           </div>
