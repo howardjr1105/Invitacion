@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Sobre from "../static/sobreV2.gif";
 
 const WelcomeScreen = ({ onEnter }) => {
   const [fadeOut, setFadeOut] = useState(false);
@@ -14,7 +15,7 @@ const WelcomeScreen = ({ onEnter }) => {
     <div className={`welcome-container ${fadeOut ? "fade-out" : ""}`}>
       <h1>Bienvenido</h1>
       <button className="enter-button" onClick={handleClick}>
-        Abrir
+        <img src={Sobre} alt="SobreAnimation"></img>
       </button>
     </div>
   );

@@ -153,14 +153,17 @@ button {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url("./sobre.png") no-repeat center;
-  color: #0f172a;
+  color: black;
   text-align: center;
   transition: opacity 1.5s ease-in-out;
   font-family: "Dancing Script", cursive;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+.welcome-container h1 {
+  font-size: 5rem;
 }
 
 .fade-out {
@@ -168,16 +171,13 @@ button {
 }
 
 .enter-button {
-  background-color: #facc15;
+  background-color: transparent;
   color: #0f172a;
-  padding: 10px 20px;
   font-size: 18px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3rem;
   cursor: pointer;
-  opacity: 0.85;
-  margin-left: 2rem;
-  margin-bottom: 2.5rem;
+  padding-left: 2rem;
 }
 .nombres {
   position: relative;
@@ -213,10 +213,6 @@ button {
 .resaltar {
   color: rgb(217, 179, 82);
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-}
-.welcome-container h1 {
-  padding-bottom: 4rem;
-  padding-left: 2rem;
 }
 .carousel-container {
   max-width: 600px;

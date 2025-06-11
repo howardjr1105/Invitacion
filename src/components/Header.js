@@ -1,14 +1,22 @@
 import React from "react";
 import CarouselComponent from "./CarouselComponent";
+import Lottie from "react-lottie";
+import Copas from "../static/Copas.json";
 
 const Header = () => {
   // Obtener el nombre del invitado desde la URL
   const params = new URLSearchParams(window.location.search);
   const guestName = params.get("invitado") || "Estimado Invitado";
+  const CopasData = {
+    loop: true,
+    autoplay: true,
+    animationData: Copas,
+  };
 
   return (
     <header className="header">
       <h1>Nos casamos</h1>
+      <Lottie options={CopasData} height={150} width={150} />
       <CarouselComponent />
       <h3>
         Más valen dos que uno, porque obtienen más fruto de su esfuerzo, si
