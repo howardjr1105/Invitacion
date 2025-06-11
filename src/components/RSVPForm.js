@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Select, Space, message } from "antd";
 import { InputNumber } from "antd";
+import Lottie from "react-lottie";
+import OK from "../static/OK-Animated.json";
 
 const RSVPForm = () => {
+  const OkData = {
+    loop: true,
+    autoplay: true,
+    animationData: OK,
+  };
   const [attending, setAttending] = useState("");
   const [numPeople, setNumPeople] = useState(1);
   const [numChildren, setNumChildren] = useState(0);
@@ -127,7 +134,8 @@ const RSVPForm = () => {
         onOk={() => setIsModalOpen(false)}
         onCancel={() => setIsModalOpen(false)}
       >
-        <p>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
+        <p>¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
+        <Lottie options={OkData} height={350} width={350} />
       </Modal>
     </div>
   );
