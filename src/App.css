@@ -100,13 +100,12 @@ button {
   align-items: center;
 }
 .rsvp-form {
-  background: url("./fondoF.png") no-repeat;
-  background-size: 100%;
   padding-bottom: 8rem;
   font-family: "Dancing Script", cursive;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+  font-size: 1.3rem;
 }
 .font {
   color: rgb(217, 179, 82);
@@ -234,4 +233,9 @@ button {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+}
+.asistencia {
+  background: url("./fondoF.png") no-repeat;
+  background-size: cover;
+  min-height: 100%;
 }

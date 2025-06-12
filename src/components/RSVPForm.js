@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Select, Space, message } from "antd";
-import { InputNumber } from "antd";
 import Lottie from "react-lottie";
 import Send from "../static/Send-Animated.json";
 
@@ -10,13 +9,16 @@ const RSVPForm = () => {
     autoplay: true,
     animationData: Send,
   };
+
+  const params = new URLSearchParams(window.location.search);
+  const maxPersonas = parseInt(params.get("maxPersonas")) || 5;
+
   const [attending, setAttending] = useState("");
   const [numPeople, setNumPeople] = useState(1);
   const [numChildren, setNumChildren] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Verificar si ya se envió el formulario antes de renderizar
   useEffect(() => {
     const enviado = localStorage.getItem("confirmacionEnviada");
     if (enviado === "true") {
@@ -45,25 +47,19 @@ const RSVPForm = () => {
       niños: numChildren,
     };
 
-    await fetch(
-      "https://prod-159.westus.logic.azure.com:443/workflows/536661fb74ca43909baacaf85076ebc5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=99P0hzPzCgSHoPa7aYRhovGuRcgQJyhBbfOA7w1qsmM",
-      {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    await fetch("https://prod-159.westus.logic.azure.com/your-endpoint", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" },
+    });
 
-    // Guardar en localStorage que el usuario ha confirmado
     localStorage.setItem("confirmacionEnviada", "true");
-
     message.success("✅ Confirmación enviada! 🎉");
   };
 
   return (
-    <div className="rsvp-form">
-      {!confirmed && <h2>Confirmar Asistencia</h2>}{" "}
-      {/* Ahora solo se muestra si no se envió */}
+    <div className="rsvp-form asistencia">
+      {!confirmed && <h2>Confirmar Asistencia</h2>}
       {confirmed ? (
         <div className="mensaje-confirmacion">
           <h3>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</h3>
@@ -80,38 +76,79 @@ const RSVPForm = () => {
               style={{ width: "6rem" }}
               placeholder="Selecciona una opción"
               options={[
-                { value: "yes", label: "Sí" },
+                { value: "si", label: "Sí" },
                 { value: "no", label: "No" },
               ]}
             />
           </Space>
 
-          {attending === "yes" && (
+          {attending === "si" && (
             <>
-              <label>Número de personas (máx. 5)</label>
-              <InputNumber
-                className="formulario"
+              <label>Personas a asistir (máx. {maxPersonas})</label>
+              <input
                 type="number"
+                className="formulario"
                 value={numPeople}
-                style={{ width: "3rem" }}
-                onChange={(value) =>
-                  setNumPeople(Math.min(5, Math.max(1, value)))
-                }
-                min="1"
-                max="5"
+                style={{
+                  width: "3rem",
+                  height: "3rem",
+                  border: "transparent",
+                  borderRadius: "0.5rem",
+                  background: "white",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                }}
+                onChange={(e) => {
+                  let value = e.target.value;
+
+                  // Permitir que el input se quede vacío
+                  if (value === "") {
+                    setNumPeople("");
+                    return;
+                  }
+
+                  value = value.replace(/\D/, ""); // Evita caracteres no numéricos
+                  value = Math.min(maxPersonas, Math.max(1, parseInt(value)));
+
+                  setNumPeople(value);
+                }}
+                min={1}
+                max={maxPersonas}
                 required
               />
 
-              <label>Número de niños</label>
-              <InputNumber
-                className="formulario"
+              <label>Cuantos son niños?</label>
+              <input
                 type="number"
+                className="formulario"
                 value={numChildren}
-                style={{ width: "3rem" }}
-                onChange={(value) =>
-                  setNumChildren(Math.min(numPeople, Math.max(0, value)))
-                }
-                min="0"
+                style={{
+                  width: "3rem",
+                  height: "3rem",
+                  border: "transparent",
+                  borderRadius: "0.5rem",
+                  background: "white",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                }}
+                onChange={(e) => {
+                  let value = e.target.value;
+
+                  // Permitir que el usuario borre el campo antes de ingresar un nuevo valor
+                  if (value === "") {
+                    setNumChildren("");
+                    return;
+                  }
+
+                  value = value.replace(/\D/, ""); // Evita caracteres no numéricos
+                  value = Math.min(
+                    numPeople,
+                    Math.max(0, parseInt(value) || 0)
+                  ); // Ajusta dentro del rango
+
+                  setNumChildren(value);
+                }}
+                min={0}
                 max={numPeople}
                 required
               />
@@ -129,7 +166,6 @@ const RSVPForm = () => {
         </form>
       )}
       <Modal
-        className=""
         open={isModalOpen}
         onOk={() => setIsModalOpen(false)}
         onCancel={() => setIsModalOpen(false)}
