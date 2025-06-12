@@ -2,16 +2,41 @@ import React from "react";
 import CarouselComponent from "./CarouselComponent";
 import Lottie from "react-lottie";
 import Copas from "../static/Copas.json";
+import { encryptData } from "./utils";
+import { decryptData } from "./utils";
 
 const Header = () => {
   // Obtener el nombre del invitado desde la URL
   const params = new URLSearchParams(window.location.search);
-  const guestName = params.get("invitado") || "Estimado Invitado";
+  const encryptedData = params.get("data");
+
+  let guestName = "Estimado Invitado"; // Valor por defecto
+
+  if (encryptedData) {
+    const userData = decryptData(decodeURIComponent(encryptedData)); // Desencriptamos los datos
+
+    if (userData) {
+      guestName = userData.invitado || "Estimado Invitado";
+    }
+  }
+
   const CopasData = {
     loop: true,
     autoplay: true,
     animationData: Copas,
   };
+
+  const data = {
+    invitado: "Familia Obando",
+    maxPersonas: 4,
+    mesa: 2,
+  };
+
+  const encryptedParams = encodeURIComponent(encryptData(data));
+
+  const secureURL = `https://invitacionobandoortega.netlify.app/?data=${encryptedParams}`;
+
+  console.log("URL segura:", secureURL);
 
   return (
     <header className="header">

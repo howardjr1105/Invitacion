@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Select, Space, message } from "antd";
 import Lottie from "react-lottie";
 import Send from "../static/Send-Animated.json";
+import { decryptData } from "./utils";
 
 const RSVPForm = () => {
   const OkData = {
@@ -11,8 +12,19 @@ const RSVPForm = () => {
   };
 
   const params = new URLSearchParams(window.location.search);
-  const maxPersonas = parseInt(params.get("maxPersonas")) || 5;
-  const numeroMesa = parseInt(params.get("mesa")) || 0;
+  const encryptedData = params.get("data");
+
+  let maxPersonas = 1;
+  let numeroMesa = 0;
+
+  if (encryptedData) {
+    const userData = decryptData(decodeURIComponent(encryptedData)); // Desencriptamos los datos
+
+    if (userData) {
+      maxPersonas = userData.maxPersonas || 1;
+      numeroMesa = userData.mesa || 0;
+    }
+  }
 
   const [attending, setAttending] = useState("");
   const [numPeople, setNumPeople] = useState(1);
