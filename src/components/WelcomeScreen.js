@@ -14,6 +14,7 @@ const WelcomeScreen = ({ onEnter }) => {
   return (
     <div className={`welcome-container ${fadeOut ? "fade-out" : ""}`}>
       <h1>Bienvenido</h1>
+      <h3>Presione el sobre para abrir</h3>
       <button className="enter-button" onClick={handleClick}>
         <img src={Sobre} alt="SobreAnimation"></img>
       </button>

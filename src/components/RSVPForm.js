@@ -22,8 +22,10 @@ const RSVPForm = () => {
 
   useEffect(() => {
     const enviado = localStorage.getItem("confirmacionEnviada");
+    const savedAttending = localStorage.getItem("attending");
     if (enviado === "true") {
       setConfirmed(true);
+      if (savedAttending) setAttending(savedAttending);
     }
   }, []);
 
@@ -58,6 +60,7 @@ const RSVPForm = () => {
     );
 
     localStorage.setItem("confirmacionEnviada", "true");
+    localStorage.setItem("attending", attending);
     message.success("✅ Confirmación enviada! 🎉");
   };
 
@@ -66,7 +69,20 @@ const RSVPForm = () => {
       {!confirmed && <h2>Confirmar Asistencia</h2>}
       {confirmed ? (
         <div className="mensaje-confirmacion">
-          <h3>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</h3>
+          {confirmed && attending === "no" && (
+            <div>
+              <h3>✅ ¡Gracias por confirmar!</h3>
+            </div>
+          )}
+          {confirmed && attending === "si" && (
+            <div>
+              <h3>✅ ¡Gracias por confirmar! Nos vemos en la boda 🎉</h3>
+              <h3>Su numero de mesa es:</h3>
+              <label style={{ fontSize: "5rem", color: "rgb(217, 179, 82)" }}>
+                #{numeroMesa}
+              </label>
+            </div>
+          )}
         </div>
       ) : (
         <form onSubmit={handleConfirm}>
@@ -175,10 +191,20 @@ const RSVPForm = () => {
         onOk={() => setIsModalOpen(false)}
         onCancel={() => setIsModalOpen(false)}
       >
-        <h2>¡Gracias por confirmar! Nos vemos en la boda 🎉</h2>
-        <Lottie options={OkData} height={350} width={350} />
-        <h2>Su numero de mesa es:</h2>
-        <label style={{ fontSize: "7rem" }}>#{numeroMesa}</label>
+        {confirmed && attending === "si" && (
+          <div>
+            <h2>¡Gracias por confirmar! Nos vemos en la boda 🎉</h2>
+            <Lottie options={OkData} height={350} width={350} />
+            <h2>Su numero de mesa es:</h2>
+            <label style={{ fontSize: "7rem" }}>#{numeroMesa}</label>
+          </div>
+        )}
+        {confirmed && attending === "no" && (
+          <div>
+            <h2>¡Gracias por confirmar!</h2>
+            <Lottie options={OkData} height={350} width={350} />
+          </div>
+        )}
       </Modal>
     </div>
   );
