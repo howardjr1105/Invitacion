@@ -12,6 +12,7 @@ const RSVPForm = () => {
 
   const params = new URLSearchParams(window.location.search);
   const maxPersonas = parseInt(params.get("maxPersonas")) || 5;
+  const numeroMesa = parseInt(params.get("mesa")) || 0;
 
   const [attending, setAttending] = useState("");
   const [numPeople, setNumPeople] = useState(1);
@@ -47,11 +48,14 @@ const RSVPForm = () => {
       niños: numChildren,
     };
 
-    await fetch("https://prod-159.westus.logic.azure.com/your-endpoint", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" },
-    });
+    await fetch(
+      "https://prod-159.westus.logic.azure.com:443/workflows/536661fb74ca43909baacaf85076ebc5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=99P0hzPzCgSHoPa7aYRhovGuRcgQJyhBbfOA7w1qsmM",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
 
     localStorage.setItem("confirmacionEnviada", "true");
     message.success("✅ Confirmación enviada! 🎉");
@@ -166,12 +170,15 @@ const RSVPForm = () => {
         </form>
       )}
       <Modal
+        className="modalStyle"
         open={isModalOpen}
         onOk={() => setIsModalOpen(false)}
         onCancel={() => setIsModalOpen(false)}
       >
-        <p>¡Gracias por confirmar! Nos vemos en la boda 🎉</p>
+        <h2>¡Gracias por confirmar! Nos vemos en la boda 🎉</h2>
         <Lottie options={OkData} height={350} width={350} />
+        <h2>Su numero de mesa es:</h2>
+        <label style={{ fontSize: "7rem" }}>#{numeroMesa}</label>
       </Modal>
     </div>
   );

@@ -239,3 +239,12 @@ button {
   background-size: cover;
   min-height: 100%;
 }
+.modalStyle {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.modalStyle label {
+  color: rgb(217, 179, 82);
+}
