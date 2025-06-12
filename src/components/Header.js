@@ -2,7 +2,6 @@ import React from "react";
 import CarouselComponent from "./CarouselComponent";
 import Lottie from "react-lottie";
 import Copas from "../static/Copas.json";
-import { encryptData } from "./utils";
 import { decryptData } from "./utils";
 
 const Header = () => {
@@ -25,18 +24,6 @@ const Header = () => {
     autoplay: true,
     animationData: Copas,
   };
-
-  const data = {
-    invitado: "Doriam Ortega",
-    maxPersonas: 2,
-    mesa: 1,
-  };
-
-  const encryptedParams = encodeURIComponent(encryptData(data));
-
-  const secureURL = `https://invitacionobandoortega.netlify.app/?data=${encryptedParams}`;
-
-  console.log("URL segura:", secureURL);
 
   return (
     <header className="header">
