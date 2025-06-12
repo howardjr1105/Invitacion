@@ -47,6 +47,7 @@ body {
   max-width: 600px;
   margin: auto;
   padding: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -145,6 +146,7 @@ button {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 .welcome-container {
   display: flex;
@@ -233,6 +235,7 @@ button {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 .asistencia {
   background: url("./fondoF.png") no-repeat;

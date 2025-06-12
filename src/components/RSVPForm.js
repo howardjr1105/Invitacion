@@ -16,7 +16,7 @@ const RSVPForm = () => {
 
   const [attending, setAttending] = useState("");
   const [numPeople, setNumPeople] = useState(1);
-  const [numChildren, setNumChildren] = useState(0);
+  //const [numChildren, setNumChildren] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -46,8 +46,8 @@ const RSVPForm = () => {
     const formData = {
       nombre: guestName,
       asistencia: attending,
-      personas: numPeople,
-      niños: numChildren,
+      personas: attending === "si" ? numPeople : 0,
+      //niños: numChildren,
     };
 
     await fetch(
@@ -134,42 +134,6 @@ const RSVPForm = () => {
                 }}
                 min={1}
                 max={maxPersonas}
-                required
-              />
-
-              <label>Cuantos son niños?</label>
-              <input
-                type="number"
-                className="formulario"
-                value={numChildren}
-                style={{
-                  width: "3rem",
-                  height: "3rem",
-                  border: "transparent",
-                  borderRadius: "0.5rem",
-                  background: "white",
-                  textAlign: "center",
-                  fontSize: "1.5rem",
-                }}
-                onChange={(e) => {
-                  let value = e.target.value;
-
-                  // Permitir que el usuario borre el campo antes de ingresar un nuevo valor
-                  if (value === "") {
-                    setNumChildren("");
-                    return;
-                  }
-
-                  value = value.replace(/\D/, ""); // Evita caracteres no numéricos
-                  value = Math.min(
-                    numPeople,
-                    Math.max(0, parseInt(value) || 0)
-                  ); // Ajusta dentro del rango
-
-                  setNumChildren(value);
-                }}
-                min={0}
-                max={numPeople}
                 required
               />
             </>
