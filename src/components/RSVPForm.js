@@ -13,7 +13,7 @@ const RSVPForm = () => {
 
   const params = new URLSearchParams(window.location.search);
   const encryptedData = params.get("data");
-
+  let guestName = "Estimado Invitado";
   let maxPersonas = 1;
   let numeroMesa = 0;
 
@@ -21,6 +21,7 @@ const RSVPForm = () => {
     const userData = decryptData(decodeURIComponent(encryptedData)); // Desencriptamos los datos
 
     if (userData) {
+      guestName = userData.invitado || "Estimado Invitado";
       maxPersonas = userData.maxPersonas || 1;
       numeroMesa = userData.mesa || 0;
     }
@@ -52,9 +53,6 @@ const RSVPForm = () => {
   };
 
   const handleSubmit = async () => {
-    const params = new URLSearchParams(window.location.search);
-    const guestName = params.get("invitado") || "Invitado";
-
     const formData = {
       nombre: guestName,
       asistencia: attending,

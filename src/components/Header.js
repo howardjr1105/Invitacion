@@ -27,9 +27,9 @@ const Header = () => {
   };
 
   const data = {
-    invitado: "Familia Obando",
-    maxPersonas: 4,
-    mesa: 2,
+    invitado: "Doriam Ortega",
+    maxPersonas: 2,
+    mesa: 1,
   };
 
   const encryptedParams = encodeURIComponent(encryptData(data));
