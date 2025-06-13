@@ -51,12 +51,18 @@ body {
 }
 
 button {
-  background: rgba(255, 215, 0, 0.7);
+  background: rgba(255, 215, 0, 0.9);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
   border-radius: 1rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+#confirmar {
+  height: 4rem;
+  width: 8rem;
+  margin: 1rem;
 }
 
 .header {
